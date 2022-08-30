@@ -4,6 +4,7 @@ import CocktHeavenView from '../views/CocktHeavenView.vue'
 import CocktHellView from '../views/CocktHellView.vue'
 import DrinkHellView from '../views/DrinkHellView.vue'
 import SearchHellView from '../views/SearchHellView.vue'
+import CategoryDrinkView from '../views/CategoryDrinkView.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/search',
     name: 'search',
     component: SearchHellView
+  },
+  {
+    path: '/:ingcategory/:cat',
+    name: 'category',
+    component: CategoryDrinkView
   }
 ]
 

@@ -36,7 +36,7 @@ export default {
   box-shadow: inset 0 0 10px 3px #FFFFFF;
   position: relative;
   color: #B91D1D;
-  width: 900px;
+  max-width: 900px;
   margin: 0 auto;
   transform: translateY(-10px);
   opacity: 0;
@@ -83,5 +83,12 @@ export default {
   left: 20%;
   top: -15%;
   z-index: -5;
+}
+
+@media screen and (max-width: 900px) {
+  .container-rand {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

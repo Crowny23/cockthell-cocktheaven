@@ -1,10 +1,12 @@
 <template>
+  <MenuBurger/>
   <div class="cocktheaven">
     <div class="content-title">
       <h1 class="title t-heaven">CocktHeaven</h1>
       <img class="wings-logo" src="../assets/angel-wings.png" alt="angel wings logo">
     </div>
-  <FormQuery :hellheaven="'heaven'"/>
+    <FormQuery :hellheaven="'heaven'"/>
+    <span class="warning">⚠️ Attention la recherche met des cocktails avec alcools</span>
   </div>
   <div class="non-alc-drink">
     <h2 class="subtitle">Tous les Cocktails sans alcool</h2>
@@ -20,6 +22,7 @@ import ApiService from '@/services/ApiService.js'
 import NoAlcoholDrink from '@/components/NoAlcoholDrink.vue'
 import FormQuery from '@/components/FormQuery.vue'
 import footerhell from '@/components/footerHell.vue'
+import MenuBurger from '@/components/MenuBurger.vue'
 
 const apiService = new ApiService()
 
@@ -28,7 +31,8 @@ export default {
   components: {
     FormQuery,
     NoAlcoholDrink,
-    footerhell
+    footerhell,
+    MenuBurger
   },
   data () {
     return {
@@ -50,6 +54,12 @@ export default {
 </script>
 
 <style>
+.warning {
+  display: block;
+  text-align: center;
+  color: red;
+}
+
 .content-title {
   position: relative;
 }
@@ -65,7 +75,7 @@ export default {
 
 .title {
   text-align: center;
-  font-size: clamp(30px, 4em, 128px);
+  font-size: clamp(20px, 4em, 128px);
 }
 
 .title.t-heaven {
@@ -92,6 +102,10 @@ export default {
   .container-non-alc-drink {
     flex-direction: column;
     align-items: center;
+  }
+
+  .wings-logo, .demonears-logo {
+    top: 0;
   }
 }
 </style>

@@ -25,6 +25,13 @@ export default {
 </script>
 
 <style>
+@font-face {
+  font-family: 'Beast of Rage';
+  src: url('./assets/fonts/Beast\ of\ Rage.otf');
+  font-family: 'One Slice';
+  src: url('./assets/fonts/One\ Slice.otf');
+}
+
 :root {
   --background-color: #404040;
   --text-color: #F58171;
@@ -69,6 +76,10 @@ body{
   font-size: 64px;
 }
 
+a .age-confirm-hell:hover {
+  text-decoration: underline;
+}
+
 .age-confirm-hell-ou{
   position: absolute;
   right: 0;
@@ -103,6 +114,10 @@ body{
   font-family: 'One Slice';
   color: #404040;
   font-size: 64px;
+}
+
+a .age-confirm-heaven:hover {
+  text-decoration: underline;
 }
 nav {
   display: flex;
@@ -148,6 +163,12 @@ nav {
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  img.logo {
+    margin: 0;
   }
 }
 </style>

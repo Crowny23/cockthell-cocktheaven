@@ -4,13 +4,13 @@
     <div class="hr-line heaven" v-if="hellheaven === 'heaven'"></div>
     <div class="logo-contact">
       <div class="container-logo">
-        <router-link to="/cockthell" id="hell"><img v-on:click="bgchangehell" class="logo" alt="logo cockthell" src="../assets/cockhell-alcool.png"></router-link>
+        <router-link to="/cockthell" id="hell"><img v-on:click="bgchangehell" class="logos" alt="logo cockthell" src="../assets/cockhell-alcool.png"></router-link>
         <div class="content-title">
           <h1 class="title t-hell">CocktHell</h1>
           <img class="demonears-logo" src="../assets/demon-ears.png" alt="demon ears logo">
           <img class="demontail-logo" src="../assets/demon-tail.png" alt="demon tail logo">
         </div>
-        <router-link to="/cocktheaven" id="heaven"><img v-on:click="bgchangeheaven" class="logo" src="../assets/cockhell-sans-alcool.png" alt="logo cocktheaven"></router-link>
+        <router-link to="/cocktheaven" id="heaven"><img v-on:click="bgchangeheaven" class="logos" src="../assets/cockhell-sans-alcool.png" alt="logo cocktheaven"></router-link>
         <div class="content-title">
           <h1 class="title t-heaven">CocktHeaven</h1>
           <img class="wings-logo" src="../assets/angel-wings.png" alt="angel wings logo">
@@ -18,15 +18,15 @@
       </div>
       <div class="container-contact">
         <h2 class="subtitle">Contactez-nous</h2>
-        <div class="network" v-if="hellheaven === 'hell'">
-          <a href="http://twitter.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/twitter.png" alt="twitter"></a>
-          <a href="http://facebook.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/facebook.png" alt="facebook"></a>
-          <a href="http://instagram.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/instagram.png" alt="instagram"></a>
-        </div>
         <div class="network" v-if="hellheaven === 'heaven'">
           <a href="http://twitter.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/twitter-heaven.png" alt="twitter"></a>
           <a href="http://facebook.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/facebook-heaven.png" alt="facebook"></a>
           <a href="http://instagram.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/instagram-heaven.png" alt="instagram"></a>
+        </div>
+        <div class="network" v-else>
+          <a href="http://twitter.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/twitter.png" alt="twitter"></a>
+          <a href="http://facebook.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/facebook.png" alt="facebook"></a>
+          <a href="http://instagram.com" target="_blank" rel="noopener noreferrer"><img class="logo-network" src="../assets/instagram.png" alt="instagram"></a>
         </div>
       </div>
     </div>
@@ -62,6 +62,10 @@ export default {
   border-radius: 5px;
 }
 
+.logos {
+  max-width: 100px;
+}
+
 .hr-line.hell {
   background: #F69272;
 }
@@ -69,6 +73,7 @@ export default {
 .hr-line.heaven {
   background-color: #3FABFF;
 }
+
 .container-logo {
   width: 50%;
 }
@@ -102,5 +107,21 @@ export default {
 .logo-network {
   max-width: 70px;
   margin: 10px;
+}
+
+@media screen and (max-width: 900px) {
+  .logo-contact {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container-logo {
+    width: 100%;
+  }
+
+  .logos {
+    margin: 0 50%;
+    transform: translateX(-50%);
+  }
 }
 </style>

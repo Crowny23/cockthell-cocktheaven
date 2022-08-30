@@ -1,4 +1,5 @@
 <template>
+  <MenuBurger/>
   <div class="drinkselected">
     <h2 class="subtitle">{{data.strDrink}}</h2>
     <div class="container-img-ing flex">
@@ -42,6 +43,7 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import ApiService from '@/services/ApiService.js'
 import IngredientsDrink from '@/components/IngredientsDrink.vue'
 import footerHell from '@/components/footerHell.vue'
+import MenuBurger from '@/components/MenuBurger.vue'
 
 const apiService = new ApiService()
 
@@ -52,14 +54,15 @@ export default {
     footerHell,
     Carousel,
     Slide,
-    Navigation
+    Navigation,
+    MenuBurger
   },
   data () {
     return {
       data: null,
       dataInst: null,
       ingredients: [],
-      measures: null,
+      measures: [],
       dataS: null,
       idDrink: this.$route.params.idDrink,
       settings: {
@@ -91,7 +94,6 @@ export default {
       const drink = await res.json()
       this.data = drink.drinks[0]
       this.translatorInst(drink.drinks[0].strInstructions)
-      const measure = []
       let numb = 1
       const baseIng = 'strIngredient'
       const baseMeasure = 'strMeasure'
@@ -99,12 +101,11 @@ export default {
       let currMeasure = baseMeasure + numb.toString()
       while (drink.drinks[0][currIng] !== null) {
         this.ingredients.push(drink.drinks[0][currIng])
-        measure.push(drink.drinks[0][currMeasure])
+        this.measures.push(drink.drinks[0][currMeasure])
         numb++
         currIng = baseIng + numb.toString()
         currMeasure = baseMeasure + numb.toString()
       }
-      this.measures = measure
       this.suggDrinks(drink.drinks[0].strIngredient1)
       console.log(this.translator('this my favorite'))
     },
@@ -130,7 +131,7 @@ export default {
 
 .container-img-ing{
   justify-content: space-around;
-  width: 900px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -144,7 +145,7 @@ export default {
 
 .inst {
   text-align: center;
-  width: 900px;
+  max-width: 900px;
   margin: 40px auto;
   font-size: 24px;
 }
@@ -180,4 +181,10 @@ export default {
   color: #404040;
 }
 
+@media screen and (max-width: 900px) {
+  .container-img-ing{
+  flex-direction: column;
+  align-items: center;
+}
+}
 </style>
