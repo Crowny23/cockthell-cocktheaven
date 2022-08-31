@@ -1,5 +1,6 @@
 <template>
   <header>
+    <MenuBurger :auth="authenticated" @authenticated="setAuthenticated" />
     <nav>
       <router-link to="/cocktheaven" id="heaven"><img v-on:click="bgchangeheaven" class="logo" src="./assets/cockhell-sans-alcool.png" alt="logo cocktheaven"></router-link>
       <router-link to="/cockthell" id="hell"><img v-on:click="bgchangehell" class="logo" alt="logo cockthell" src="./assets/cockhell-alcool.png"></router-link>
@@ -9,8 +10,18 @@
 </template>
 
 <script>
+import MenuBurger from './components/MenuBurger.vue'
 
 export default {
+  name: 'App',
+  components: {
+    MenuBurger
+  },
+  data () {
+    return {
+      authenticated: false
+    }
+  },
   methods: {
     bgchangehell: function () {
       document.documentElement.style.setProperty('--background-color', '#404040')
@@ -19,6 +30,13 @@ export default {
     bgchangeheaven: function () {
       document.documentElement.style.setProperty('--background-color', '#DEF3FF')
       document.documentElement.style.setProperty('--text-color', '#3FABFF')
+    },
+    setAuthenticated (status) {
+      this.authenticated = status
+      console.log(this.authenticated)
+    },
+    logout () {
+      this.authenticated = false
     }
   }
 }

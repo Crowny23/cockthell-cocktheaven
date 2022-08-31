@@ -1,5 +1,4 @@
 <template>
-  <MenuBurger/>
   <div class="drinkselected">
     <h2 class="subtitle">{{data.strDrink}}</h2>
     <div class="container-img-ing flex">
@@ -43,7 +42,6 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import ApiService from '@/services/ApiService.js'
 import IngredientsDrink from '@/components/IngredientsDrink.vue'
 import footerHell from '@/components/footerHell.vue'
-import MenuBurger from '@/components/MenuBurger.vue'
 
 const apiService = new ApiService()
 
@@ -54,8 +52,7 @@ export default {
     footerHell,
     Carousel,
     Slide,
-    Navigation,
-    MenuBurger
+    Navigation
   },
   data () {
     return {

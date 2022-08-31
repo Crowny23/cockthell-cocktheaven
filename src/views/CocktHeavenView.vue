@@ -1,5 +1,4 @@
 <template>
-  <MenuBurger/>
   <div class="cocktheaven">
     <div class="content-title">
       <h1 class="title t-heaven">CocktHeaven</h1>
@@ -22,7 +21,6 @@ import ApiService from '@/services/ApiService.js'
 import NoAlcoholDrink from '@/components/NoAlcoholDrink.vue'
 import FormQuery from '@/components/FormQuery.vue'
 import footerhell from '@/components/footerHell.vue'
-import MenuBurger from '@/components/MenuBurger.vue'
 
 const apiService = new ApiService()
 
@@ -31,8 +29,7 @@ export default {
   components: {
     FormQuery,
     NoAlcoholDrink,
-    footerhell,
-    MenuBurger
+    footerhell
   },
   data () {
     return {

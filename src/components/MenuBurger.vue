@@ -56,7 +56,9 @@
             </ul>
           </div>
         </li>
-        <li><label>Connexion</label></li>
+        <li v-if="auth === false"><router-link to="/login">Connexion</router-link></li>
+        <li v-if="auth"><router-link to="/login">deconnexion</router-link></li>
+        <li><router-link to="/registration">Inscription {{auth}}</router-link></li>
       </ul>
     </div>
   </nav>
@@ -69,6 +71,7 @@ const apiService = new ApiService()
 
 export default {
   name: 'MenuBurger',
+  props: ['auth'],
   data () {
     return {
       dataCat: null,

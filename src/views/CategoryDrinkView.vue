@@ -1,5 +1,4 @@
 <template>
-<MenuBurger/>
 <div class="searchResult">
   <FormQuery />
   <h1 class="subtitle">{{query}}</h1>
@@ -15,7 +14,6 @@ import FormQuery from '@/components/FormQuery.vue'
 import ApiService from '@/services/ApiService.js'
 import PopularsDrinks from '@/components/PopularsDrinks.vue'
 import FooterHell from '@/components/footerHell.vue'
-import MenuBurger from '@/components/MenuBurger.vue'
 
 const apiService = new ApiService()
 
@@ -24,8 +22,7 @@ export default {
   components: {
     FormQuery,
     PopularsDrinks,
-    FooterHell,
-    MenuBurger
+    FooterHell
   },
   data () {
     return {

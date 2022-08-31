@@ -1,5 +1,4 @@
 <template>
-  <MenuBurger/>
   <div class="cockthell">
     <div class="content-title">
       <h1 class="title t-hell">CocktHell</h1>
@@ -27,7 +26,6 @@ import ApiService from '@/services/ApiService.js'
 import PopularsDrinks from '@/components/PopularsDrinks.vue'
 import RandomDrink from '../components/RandomDrink.vue'
 import footerhell from '@/components/footerHell.vue'
-import MenuBurger from '@/components/MenuBurger.vue'
 
 const apiService = new ApiService()
 
@@ -37,8 +35,7 @@ export default {
     FormQuery,
     PopularsDrinks,
     RandomDrink,
-    footerhell,
-    MenuBurger
+    footerhell
   },
   data () {
     return {
