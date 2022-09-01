@@ -104,7 +104,6 @@ export default {
         currMeasure = baseMeasure + numb.toString()
       }
       this.suggDrinks(drink.drinks[0].strIngredient1)
-      console.log(this.translator('this my favorite'))
     },
     async suggDrinks (ing) {
       const res = await apiService.getSuggDrink(ing)

@@ -15,6 +15,7 @@
           </svg>
         </label>
         <span>MENU</span>
+        <span v-if="nameUser">Bonjour, {{nameUser}}</span>
       </div>
       <ul>
         <li><router-link to="/">Accueil</router-link></li>
@@ -56,9 +57,9 @@
             </ul>
           </div>
         </li>
-        <li v-if="auth === false"><router-link to="/login">Connexion</router-link></li>
-        <li v-if="auth"><router-link to="/login">deconnexion</router-link></li>
-        <li><router-link to="/registration">Inscription {{auth}}</router-link></li>
+        <li v-if="idUser === null"><router-link to="/login">Connexion</router-link></li>
+        <li v-if="idUser"><router-link @click="logout()" to="/cockthell">deconnexion</router-link></li>
+        <li v-if="idUser === null"><router-link to="/registration">Inscription {{auth}}</router-link></li>
       </ul>
     </div>
   </nav>
@@ -71,7 +72,7 @@ const apiService = new ApiService()
 
 export default {
   name: 'MenuBurger',
-  props: ['auth'],
+  props: ['idUser', 'nameUser'],
   data () {
     return {
       dataCat: null,
@@ -92,6 +93,10 @@ export default {
       const res = await apiService.getIngDrinks()
       const ing = await res.json()
       this.dataIng = ing.drinks
+    },
+    logout () {
+      sessionStorage.clear()
+      window.location.reload()
     }
   }
 }

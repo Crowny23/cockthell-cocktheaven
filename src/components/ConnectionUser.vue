@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="login" id="login">
+  <form @submit="login" id="login">
     <label for="username">Nom d'utilisateur</label>
     <input type="text" id="username" v-model="input.pseudo" required>
 
@@ -10,19 +10,16 @@
 
     <button>connexion</button>
   </form>
-
-  {{user}}
 </template>
 
 <script>
 import ApiService from '@/services/ApiService'
-import { defineComponent } from 'vue'
 
 const bcrypt = require('bcryptjs')
 
 const apiService = new ApiService()
 
-export default defineComponent({
+export default {
   name: 'ConnectionUser',
   emits: ['setAuthenticated'],
   data () {
@@ -41,28 +38,35 @@ export default defineComponent({
       const user = await res.json()
       this.user = user
     },
-    async login () {
+    async login (e) {
+      e.preventDefault()
       await this.allUser()
       let pseudo = ''
       let pwd = ''
+      let idUser = ''
       if (this.input.pseudo !== '' && this.input.password !== '') {
         this.user.forEach((item) => {
           if (item.pseudo === this.input.pseudo) {
             pseudo = item.pseudo
             pwd = item.password
+            idUser = item._id
           }
         })
-        if (pseudo !== '') {
-          this.incorect = false
+        console.log(pseudo, pwd)
+        if (pseudo !== '' && pwd !== '') {
           const compare = bcrypt.compareSync(this.input.password, pwd)
           if (compare) {
-            this.$emit('setAuthenticated', true)
+            this.incorect = false
+            sessionStorage.setItem('idUser', idUser)
+            sessionStorage.setItem('nameUser', pseudo)
+            await this.$router.push('/cockthell')
+            this.$router.go()
+          } else {
+            this.incorect = true
           }
-        } else {
-          this.incorect = true
         }
       }
     }
   }
-})
+}
 </script>
