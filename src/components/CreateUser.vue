@@ -36,9 +36,9 @@ export default {
   },
   methods: {
     async handleSubmitForm () {
-      const apiUrl = 'http://localhost:4000/api/create'
+      const userUrl = 'http://localhost:4000/user/create'
       this.user.password = bcrypt.hashSync(this.user.password, salt)
-      axios.post(apiUrl, this.user).then(() => {
+      axios.post(userUrl, this.user).then(() => {
         this.$router.push('/cockthell')
         this.user = {
           pseudo: '',

@@ -32,6 +32,12 @@
         </template>
       </Carousel>
     </div>
+    <div class="comments">
+      <h3 class="subtitle">Commentaire</h3>
+      <CommentDrink v-for="c in comments" :key="c._id" :pseudo="c.pseudo" :date="c.date" :text="c.text"></CommentDrink>
+      <CommentCreate v-if="idUser" :idDrink="idDrink"/>
+      <p class="login-here" v-else>Veuillez-vous Connecter pour ecrire un commentaire <router-link to="/login">ici</router-link></p>
+    </div>
   </div>
   <footerHell :hellheaven="'hell'" />
 </template>
@@ -42,6 +48,8 @@ import { Carousel, Navigation, Slide } from 'vue3-carousel'
 import ApiService from '@/services/ApiService.js'
 import IngredientsDrink from '@/components/IngredientsDrink.vue'
 import footerHell from '@/components/footerHell.vue'
+import CommentCreate from '@/components/CommentCreate.vue'
+import CommentDrink from '@/components/CommentDrink.vue'
 
 const apiService = new ApiService()
 
@@ -52,7 +60,9 @@ export default {
     footerHell,
     Carousel,
     Slide,
-    Navigation
+    Navigation,
+    CommentCreate,
+    CommentDrink
   },
   data () {
     return {
@@ -62,6 +72,8 @@ export default {
       measures: [],
       dataS: null,
       idDrink: this.$route.params.idDrink,
+      idUser: sessionStorage.getItem('idUser'),
+      comments: null,
       settings: {
         itemsToShow: 1,
         snapAlign: 'center'
@@ -70,9 +82,9 @@ export default {
       // any settings not specified will fallback to the carousel settings
       breakpoints: {
         // 700px and up
-        500: {
-          itemsToShow: 3.5,
-          snapAlign: 'center'
+        700: {
+          itemsToShow: 2,
+          snapAlign: 'start'
         },
         // 1024 and up
         1024: {
@@ -84,6 +96,7 @@ export default {
   },
   created () {
     this.drinkSelected(this.idDrink)
+    this.commenterre(this.idDrink)
   },
   methods: {
     async drinkSelected (id) {
@@ -114,6 +127,11 @@ export default {
       const res = await apiService.getTranslator(inst.toString())
       const translate = await res.json()
       this.dataInst = translate.translations[0].text
+    },
+    async commenterre (id) {
+      const res = await apiService.getCommentidDrink(id)
+      const comment = await res.json()
+      this.comments = comment
     }
   }
 }
@@ -175,6 +193,16 @@ export default {
 .carousel__prev, .carousel__next {
   background-color: #F69272;
   color: #404040;
+}
+
+.comments {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.login-here {
+  text-align: center;
+  font-size: 1.5em;
 }
 
 @media screen and (max-width: 900px) {

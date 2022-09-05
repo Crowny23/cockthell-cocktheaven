@@ -4,7 +4,7 @@ const userRoute = express.Router()
 
 let UserModel = require('../models/User')
 
-// View all User
+// View all Users
 userRoute.route('/').get((req, res) => {
   UserModel.find((error, data) => {
     if(error) {

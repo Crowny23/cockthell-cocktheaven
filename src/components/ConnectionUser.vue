@@ -52,7 +52,6 @@ export default {
             idUser = item._id
           }
         })
-        console.log(pseudo, pwd)
         if (pseudo !== '' && pwd !== '') {
           const compare = bcrypt.compareSync(this.input.password, pwd)
           if (compare) {
@@ -64,6 +63,8 @@ export default {
           } else {
             this.incorect = true
           }
+        } else {
+          this.incorect = true
         }
       }
     }

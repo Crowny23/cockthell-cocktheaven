@@ -49,6 +49,10 @@ export default class ApiService {
   }
 
   getUserMongo () {
-    return fetch('http://localhost:4000/api', this.init)
+    return fetch('http://localhost:4000/user', this.init)
+  }
+
+  getCommentidDrink (id) {
+    return fetch(`http://localhost:4000/comment/idDrink/${id}`, this.init)
   }
 }

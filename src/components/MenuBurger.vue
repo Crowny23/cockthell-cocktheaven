@@ -58,7 +58,7 @@
           </div>
         </li>
         <li v-if="idUser === null"><router-link to="/login">Connexion</router-link></li>
-        <li v-if="idUser"><router-link @click="logout()" to="/cockthell">deconnexion</router-link></li>
+        <li v-if="idUser"><label @click="logout()">deconnexion</label></li>
         <li v-if="idUser === null"><router-link to="/registration">Inscription {{auth}}</router-link></li>
       </ul>
     </div>
