@@ -1,7 +1,7 @@
 <template>
-  <form @submit="onSubmit">
-    <textarea name="" v-model="comment.text" cols="30" rows="10" placeholder="Votre commentaire"></textarea>
-    <input type="submit" value="Envoyer">
+  <form @submit="onSubmit" class="flex form-reglog">
+    <textarea class="text-area" v-model="comment.text" cols="100" rows="2" placeholder="Ajouter votre commentaire"></textarea>
+    <button>Ajouter un commentaire</button>
   </form>
 </template>
 

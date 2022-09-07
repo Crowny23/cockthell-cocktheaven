@@ -1,5 +1,7 @@
 <template>
-  <form @submit="login" id="login">
+<h2 class="subtitle">Connexion</h2>
+<div class="container-form-reglog">
+  <form @submit="login" class="form-reglog flex">
     <label for="username">Nom d'utilisateur</label>
     <input type="text" id="username" v-model="input.pseudo" required>
 
@@ -10,6 +12,7 @@
 
     <button>connexion</button>
   </form>
+</div>
 </template>
 
 <script>

@@ -1,9 +1,10 @@
 <template>
   <div class="comment">
+    <hr>
     <p>{{pseudo}}</p>
     <p>{{date}}</p>
     <p>{{text}}</p>
-    <hr><hr>
+    <hr>
   </div>
 </template>
 
@@ -13,3 +14,13 @@ export default {
   props: ['pseudo', 'date', 'text']
 }
 </script>
+
+<style scope>
+hr {
+  border-color: var(--text-color);
+}
+
+p {
+  font-weight: bold;
+}
+</style>
