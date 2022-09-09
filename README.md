@@ -31,3 +31,7 @@ mdp: abcd
 
 ### commentaire
 there are comments in cocktail mojito
+
+### start server mongoApi
+cd ./backend
+node index.js
