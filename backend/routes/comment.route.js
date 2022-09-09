@@ -37,19 +37,6 @@ commentRoute.route('/idDrink/:id').get((req, res) => {
   })
 })
 
-// Update user
-commentRoute.route('/update/:id').post((req, res, next) => {
-  CommentModel.findByIdAndUpdate(req.params.id, {
-    $set: req.body
-  }, (error, data) => {
-    if (error) {
-      return next(data)
-    } else {
-      res.json(data)
-    }
-  })
-})
-
 // Delete User
 commentRoute.route('/delete/:id').delete((req, res, next) => {
   CommentModel.findByIdAndRemove(req.params.id, (error, data) => {

@@ -79,7 +79,7 @@ export default {
   font-size: 1.3em;
 }
 
-.form-reglog button {
+.form-reglog button, .suppression {
   border: 2px solid #F58171;
   font-size: 1.4em;
   background-color: var(--background-color);
@@ -89,6 +89,12 @@ export default {
   transition: all 0.3s ease-out;
   font-weight: bold;
   margin: 10px;
+}
+
+.suppression {
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .form-reglog button:hover {

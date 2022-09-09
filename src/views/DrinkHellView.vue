@@ -34,7 +34,7 @@
     </div>
     <div class="comments">
       <h3 class="subtitle">Commentaire</h3>
-      <CommentDrink v-for="c in comments" :key="c._id" :pseudo="c.pseudo" :date="c.date" :text="c.text"></CommentDrink>
+      <CommentDrink v-for="c in comments" :key="c._id" :id="c._id" :pseudo="c.pseudo" :date="c.date" :text="c.text" :nameUser="nameUser"></CommentDrink>
       <CommentCreate v-if="idUser" :idDrink="idDrink"/>
       <p class="login-here" v-else>Veuillez-vous Connecter pour ecrire un commentaire <router-link to="/login">ici</router-link></p>
     </div>
@@ -73,6 +73,7 @@ export default {
       dataS: null,
       idDrink: this.$route.params.idDrink,
       idUser: sessionStorage.getItem('idUser'),
+      nameUser: sessionStorage.getItem('nameUser'),
       comments: null,
       settings: {
         itemsToShow: 1,
