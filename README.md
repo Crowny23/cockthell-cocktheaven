@@ -22,3 +22,12 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### utilisateur
+username: crowny
+mdp: lol
+username: jessy
+mdp: abcd
+
+### commentaire
+there are comments in cocktail mojito
