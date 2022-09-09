@@ -1,6 +1,6 @@
 <template>
   <form @submit="onSubmit" class="flex form-reglog">
-    <textarea class="text-area" v-model="comment.text" cols="100" rows="2" placeholder="Ajouter votre commentaire"></textarea>
+    <input type="text" class="text-area" v-model="comment.text" placeholder="Ajouter votre commentaire">
     <button>Ajouter un commentaire</button>
   </form>
 </template>
@@ -47,3 +47,11 @@ export default {
   }
 }
 </script>
+
+<style>
+.text-area {
+  max-width: 900px;
+  margin: 10px;
+  font-size: 1em;
+}
+</style>
